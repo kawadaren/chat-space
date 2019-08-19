@@ -33,10 +33,10 @@
 |------|----|-------|
 |body|text|null: falese|
 |image|string|null: falese|
-##Association
+## Association
 - belongs_to :user
 - belongs_to :group
-##index
+## index
 - add index :messeage,  [:body, :image]
 
 
