@@ -7,6 +7,7 @@
 |username|string|null: false, unique: true|
 ### Association
 - has_many :messeages
+- has_many :groups_users
 - has_many :groups,  through:  :groups_users
 ##index
 - add index :users,  :username
@@ -14,16 +15,17 @@
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group-name|string|null: false, unique: true|
+|name|string|null: false, unique: true|
 ### Association
 - has_many :messeages
+- has_many :groups_users
 - has_many :users,  through:  :groups_users
 
 ## groups_usersテーブル(中間テーブル)
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|reference|null: false, foreign_key: true|
+|group_id|reference|null: false, foreign_key: true|
 ### Association
 - belongs_to :group
 - belongs_to :user
@@ -31,13 +33,13 @@
 ## messeageテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: falese|
-|image|string|null: falese|
+|username|string|null: false, unique: true|
+|name|string|null: false, unique: true|
+|body|text||
+|image|text||
 ## Association
 - belongs_to :user
 - belongs_to :group
-## index
-- add index :messeage,  [:body, :image]
 
 
 
