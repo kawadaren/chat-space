@@ -4,13 +4,13 @@
 |------|----|-------|
 |emial|string|null: false, unique: true|
 |password|string|null: false, unique: true|
-|username|string|null: false, unique: true|
+|name|string|null: false, unique: true|
 ### Association
 - has_many :messeages
 - has_many :groups_users
 - has_many :groups,  through:  :groups_users
 ##index
-- add index :users,  :username
+- add index :users,  :name
 
 ## groupsテーブル
 |Column|Type|Options|
@@ -30,11 +30,11 @@
 - belongs_to :group
 - belongs_to :user
 
-## messeageテーブル
+## messeagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|username|string|null: false, unique: true|
-|name|string|null: false, unique: true|
+|user_id|reference|null: false, foreign_key: true|
+|group_id|reference|null: false, foreign_key: true|
 |body|text||
 |image|text||
 ## Association
