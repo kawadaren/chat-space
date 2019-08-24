@@ -1,0 +1,18 @@
+.chat-side
+  .side-header
+    %h3.side-header__name
+      ユーザネーム
+    %ul.side-header__lists
+      %li.list
+        = link_to '#' do
+          = fa_icon 'pencil-square-o', class: 'icon'
+      %li.list    
+        = link_to '#' do
+          = fa_icon 'cog', class: 'icon'
+ 
+  .side-body
+    .side-body__box
+      .side-body__box__group-name
+        グループ名
+      .side-body__box__message
+        新着メッセージ
