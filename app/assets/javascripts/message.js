@@ -23,7 +23,6 @@ $(function(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
-    var messagesField = $('.messages')
     $.ajax({
       url: url,
       type: "POST",
@@ -34,8 +33,8 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      messagesField.append(html);
-      messagesField.animate({ scrollTop:$('.messages')[0].scrollHeight});
+      $('.messages').append(html);
+      $('.messages').animate({ scrollTop:$('.messages')[0].scrollHeight});
     })
     .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
