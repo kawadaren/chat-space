@@ -23,7 +23,7 @@ $(function(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
-    var messagesField = $('#messages')
+    var messagesField = $('.messages')
     $.ajax({
       url: url,
       type: "POST",
@@ -35,7 +35,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       messagesField.append(html);
-      messagesField.animate({ scrollTop:$('#messages')[0].scrollHeight});
+      messagesField.animate({ scrollTop:$('.messages')[0].scrollHeight});
     })
     .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
@@ -57,10 +57,9 @@ $(function(){
       var insertHTML = '';
       messages.forEach(function(message){
         insertHTML = buildHTML(message);
-        $('#messages').append(insertHTML);
+        $('.messages').append(insertHTML);
       })
-    $('#messages').animate({scrollTop: $('#messages')[0].scrollHeight}, 'fast');
-
+    $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
     .fail(function() {
       alert('自動更新に失敗しました');
