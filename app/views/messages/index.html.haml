@@ -12,7 +12,7 @@
           - @group.group_users.each do|group_user|
             %li.left-header__members__member 
             = group_user.user.name
-         
+          
       .right-header
         = link_to edit_group_path(@group) do
           Edit
