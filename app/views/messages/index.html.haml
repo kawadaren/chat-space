@@ -10,8 +10,10 @@
         %ul.left-header__members
           Member：
           %li.left-header__members__member 
-            - @group.group_users.each do|group_user|
-              = group_user.user.name
+            - @group.users.each do|user|
+              %i
+                = user.name
+              
           
       .right-header
         = link_to edit_group_path(@group) do

@@ -16,11 +16,11 @@ $(function() {
                 </li>`
     search_result.append(html);
   }
-  function buildHTML(id, name) {
-    var html = `<div class="chat-group-user clearfix" id=chat-group-user-${id}>
-                  <input type="hidden" name="group[user_ids][]" value="${id}">
-                  <p class="chat-group-user__name">${name}</p>
-                  <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn data-user-id="${id}">削除</a>
+  function buildHTML(user_id, user_name) {
+    var html = `<div class="chat-group-user clearfix" id=${user_id}>
+                  <input type="hidden" id="group[user_ids][]" value="${user_id}">
+                  <p class="chat-group-user__name">${user_name}</p>
+                  <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn data-user-id="${user_id}">削除</a>
                 </div>`
     return html
   }
@@ -49,17 +49,15 @@ $("#user-search-field").on("keyup", function() {
   })
 });
 $(document).on('click', '.user-search-add', function(){
-  var id = $(this).data('user-id');
-  var name = $(this).data('user-name');
-  var insertHTML = buildHTML(id, name);
+  var user_id = $(this).attr('data-user-id');
+  var user_name = $(this).attr('data-user-name');
+  var insertHTML = buildHTML(user_id, user_name);
   $('.chat-group-users').append(insertHTML);
-  $(this).parent('.chat-group-user').remove();
+  $(this).parent().remove();
 });
 
-$(".chat-group-users").on('click', '.user-search-remove', function() {
-  var id = $(this).data('user-id');
- 
-  $(`#chat-group-user-${id}`).remove();
+$(".chat-group-users").on('click','.user-search-remove', function() {
+  $(this).parent().remove();
 });
 });
 });
